@@ -1,0 +1,410 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "contract IEventOutcomeProvider",
+        "name": "provider",
+        "type": "address"
+      },
+      {
+        "internalType": "contract Balance",
+        "name": "denominatorBalance",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "againstBook",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "bestSellPrice",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint8",
+        "name": "bestBuyPrice",
+        "type": "uint8"
+      },
+      {
+        "internalType": "contract Balance",
+        "name": "balance",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "synthAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8",
+        "name": "priceForEach",
+        "type": "uint8"
+      }
+    ],
+    "name": "againstBuyLimit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "denominatorAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "againstBuyMarket",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "synthAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8",
+        "name": "priceForEach",
+        "type": "uint8"
+      }
+    ],
+    "name": "againstSellLimit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "synthAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "againstSellMarket",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "balance",
+    "outputs": [
+      {
+        "internalType": "contract Balance",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "claimWinnings",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "currentState",
+    "outputs": [
+      {
+        "internalType": "enum IEventOutcomeProvider.EventOutcome",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "forBook",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "bestSellPrice",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint8",
+        "name": "bestBuyPrice",
+        "type": "uint8"
+      },
+      {
+        "internalType": "contract Balance",
+        "name": "balance",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "synthAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8",
+        "name": "priceForEach",
+        "type": "uint8"
+      }
+    ],
+    "name": "forBuyLimit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "denominatorAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "forBuyMarket",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "synthAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8",
+        "name": "priceForEach",
+        "type": "uint8"
+      }
+    ],
+    "name": "forSellLimit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "synthAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "forSellMarket",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "adr",
+        "type": "address"
+      }
+    ],
+    "name": "getAgainstBalance",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "price",
+        "type": "uint8"
+      }
+    ],
+    "name": "getAgainstOrderCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "count",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "price",
+        "type": "uint8"
+      }
+    ],
+    "name": "getAgainstPriceVolume",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "volume",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "adr",
+        "type": "address"
+      }
+    ],
+    "name": "getDenominatorBalance",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "adr",
+        "type": "address"
+      }
+    ],
+    "name": "getForBalance",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "price",
+        "type": "uint8"
+      }
+    ],
+    "name": "getForOrderCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "count",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "price",
+        "type": "uint8"
+      }
+    ],
+    "name": "getForPriceVolume",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "volume",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "outcomeProvider",
+    "outputs": [
+      {
+        "internalType": "contract IEventOutcomeProvider",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "price",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "removeAgainstLimit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint8",
+        "name": "price",
+        "type": "uint8"
+      },
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "removeForLimit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "tryResolve",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
