@@ -1,3 +1,16 @@
+## Tricast market component
+
+Usage example - https://codesandbox.io/s/youthful-ganguly-4v22s?file=/index.html
+
+You need to use iframe with market query, where market is market id in app
+```html
+<iframe
+  src="https://tricast-ui.vercel.app/component?market=1"
+  width="320"
+  height="250"
+/>
+```
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
