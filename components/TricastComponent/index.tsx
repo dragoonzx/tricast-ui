@@ -7,10 +7,12 @@ import Moralis from "moralis";
 
 interface ITricastComponentProps {
   title?: string;
+  market?: string;
 }
 
 const TricastComponent = ({
   title = "Price of the AVAX will be above 100 at 21.02.2022, 18:00",
+  market,
 }: ITricastComponentProps) => {
   const { isAuthenticated } = useMoralis();
 
@@ -27,6 +29,8 @@ const TricastComponent = ({
     const forBook = await Moralis.Web3API.native.runContractFunction(options);
     console.log({ forBook });
     setForBook(forBook);
+    // @ts-expect-error
+    setYesX(forBook ? 100 / forBook.bestBuyPrice : 0);
   };
 
   const getAgainstBook = async () => {
@@ -41,6 +45,8 @@ const TricastComponent = ({
     );
     console.log({ againstBook });
     setAgainstBook(againstBook);
+    // @ts-expect-error
+    setNoX(againstBook ? 100 / againstBook.bestBuyPrice : 0);
   };
 
   useEffect(() => {
@@ -54,11 +60,27 @@ const TricastComponent = ({
 
   const [state, setState] = useState({ x: 10 });
 
+  const [yesX, setYesX] = useState(0);
+  const [noX, setNoX] = useState(0);
+
+  useEffect(() => {
+    setYesX(100 / state.x);
+    setNoX(100 / (100 - state.x));
+  }, [state]);
+
   return (
     <div className="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl">
       <div className="p-5">
         <p className="mb-2 font-bold text-xs">{title}</p>
-        <div>
+        <label>
+          <input
+            className="placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+            placeholder="10 AVAX"
+            type="text"
+            name="search"
+          />
+        </label>
+        <div className="text-center mt-2">
           <Slider
             axis="x"
             x={state.x}
@@ -72,18 +94,18 @@ const TricastComponent = ({
         </div>
         <div className="flex justify-between px-4 mt-2">
           <div className="flex flex-col text-center">
-            <span className="text-xs">Limit (?)</span>
-            <span className="text-2xl">
-              {forBook ? 100 / forBook.bestBuyPrice : 0}x
-            </span>
-            <button>Yes</button>
+            <span className="text-xs">Limit</span>
+            <span className="text-2xl">{yesX.toFixed(1)} x</span>
+            <button className="bg-gray-500 rounded text-white mt-2 w-20">
+              Yes
+            </button>
           </div>
           <div className="flex flex-col text-center">
-            <span className="text-xs">Limit (?)</span>
-            <span className="text-2xl">
-              {againstBook ? 100 / againstBook.bestBuyPrice : 0}x
-            </span>
-            <button>No</button>
+            <span className="text-xs">Limit</span>
+            <span className="text-2xl">{noX.toFixed(1)} x</span>
+            <button className="bg-gray-500 rounded text-white mt-2 w-20">
+              No
+            </button>
           </div>
         </div>
       </div>

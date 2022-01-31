@@ -3,6 +3,7 @@ import TricastComponent from "../TricastComponent";
 import TricastHeader from "../TricastHeader";
 import { useMoralis } from "react-moralis";
 import classNames from "classnames";
+import Link from "next/link";
 
 const TricastMain = () => {
   const { user, isAuthenticated, authenticate, isAuthenticating } =
@@ -154,7 +155,7 @@ const TricastMain = () => {
         <div className="flex flex-col w-56 border-r border-gray-800">
           <button className="relative text-sm focus:outline-none group">
             <div className="flex items-center justify-between w-full h-16 px-4 border-b border-gray-800 hover:bg-gray-800">
-              <span className="font-medium">Categories</span>
+              <span className="font-medium">Last Categories</span>
               <svg
                 className="w-4 h-4"
                 xmlns="http://www.w3.org/2000/svg"
@@ -190,12 +191,11 @@ const TricastMain = () => {
             </div>
           </button>
           <div className="flex flex-col flex-grow p-4 overflow-auto">
-            <a
-              className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-800"
-              href="#"
-            >
-              <span className="leading-none">Minecraft</span>
-            </a>
+            <Link href="/minecraft">
+              <span className="cursor-pointer flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-800 leading-none">
+                Music Event Party
+              </span>
+            </Link>
             <a
               className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-800"
               href="#"
@@ -327,7 +327,16 @@ const TricastMain = () => {
                   <div>
                     <div className="relative py-8 lg:py-8">
                       <div className="relative grid gap-5 grid-cols-3">
-                        <TricastComponent />
+                        {[
+                          "Price of the AVAX will be above 100 at 21.02.2022, 18:00",
+                          "Price of the ETH will be above 4200 at 24.04.2022",
+                          "Price of the BTC will be above 60000 at 26.05.2022",
+                          "Price of the YAK will be above 40000 at 26.04.2022",
+                        ].map((v) => (
+                          <React.Fragment key={v}>
+                            <TricastComponent title={v} />
+                          </React.Fragment>
+                        ))}
                       </div>
                     </div>
                   </div>
