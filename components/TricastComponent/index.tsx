@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-input-slider";
 import { useMoralis } from "react-moralis";
 import TricastTrio from "../../abis/TricastTrio.json";
-import { TRICAST_TRIO_CONTRACT } from "../../constants";
+import Tricast from "../../abis/Tricast.json";
+import { TRICAST_TRIO_CONTRACT, TRICAST_CONTRACT } from "../../constants";
 import Moralis from "moralis";
 import { ethers } from "ethers";
 
