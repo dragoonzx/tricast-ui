@@ -4,6 +4,7 @@ import { useMoralis } from "react-moralis";
 import TricastTrio from "../../abis/TricastTrio.json";
 import { TRICAST_TRIO_CONTRACT } from "../../constants";
 import Moralis from "moralis";
+import { ethers } from "ethers";
 
 interface ITricastComponentProps {
   title?: string;
@@ -68,12 +69,56 @@ const TricastComponent = ({
     setNoX(100 / (100 - state.x));
   }, [state]);
 
+  const [val, setVal] = useState(0);
+
+  const handleValChange = (e: React.SyntheticEvent) => {
+    const newVal = (e.target as HTMLInputElement).value;
+    const parsedVal = Number.parseFloat(newVal);
+    setVal(parsedVal);
+  };
+
+  const forBuyLimit = async () => {
+    // @ts-expect-error
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+
+    const tricastContract = new ethers.Contract(
+      TRICAST_TRIO_CONTRACT,
+      TricastTrio,
+      signer
+    );
+
+    const kek = await tricastContract.forBuyLimit(
+      ethers.utils.parseUnits(String(val / state.x)),
+      state.x
+    );
+  };
+
+  const againstBuyLimit = async () => {
+    // @ts-expect-error
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+
+    const tricastContract = new ethers.Contract(
+      TRICAST_TRIO_CONTRACT,
+      TricastTrio,
+      signer
+    );
+
+    const kek = await tricastContract.againstBuyLimit(
+      ethers.utils.parseUnits(String(val)),
+      100 - state.x
+    );
+  };
+
   return (
     <div className="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl">
       <div className="p-5">
         <p className="mb-2 font-bold text-xs">{title}</p>
         <label>
           <input
+            value={val}
+            onChange={handleValChange}
             className="placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
             placeholder="10 AVAX"
             type="text"
@@ -85,6 +130,8 @@ const TricastComponent = ({
             axis="x"
             x={state.x}
             onChange={setState}
+            xmin={1}
+            xstep={1}
             styles={{
               active: {
                 backgroundColor: "rgb(17 24 39)",
@@ -96,14 +143,20 @@ const TricastComponent = ({
           <div className="flex flex-col text-center">
             <span className="text-xs">Limit</span>
             <span className="text-2xl">{yesX.toFixed(1)} x</span>
-            <button className="bg-gray-500 rounded text-white mt-2 w-20">
+            <button
+              onClick={forBuyLimit}
+              className="bg-gray-500 rounded text-white mt-2 w-20"
+            >
               Yes
             </button>
           </div>
           <div className="flex flex-col text-center">
             <span className="text-xs">Limit</span>
             <span className="text-2xl">{noX.toFixed(1)} x</span>
-            <button className="bg-gray-500 rounded text-white mt-2 w-20">
+            <button
+              onClick={againstBuyLimit}
+              className="bg-gray-500 rounded text-white mt-2 w-20"
+            >
               No
             </button>
           </div>
